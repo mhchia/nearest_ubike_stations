@@ -1,0 +1,12 @@
+<html>
+<head>
+</head>
+<body>
+    <h1>{% if station.pk == 1 %} {{ station.name|upper|safe }} {% else %} {{ station.name|safe }} {% endif %}</h1><br>
+<pre>
+ubikes_remaining: {{ station.num_bikes }}<br>
+lat: {{ station.lat }} <br>
+lng: {{ station.lng }} <br>
+</pre>
+</body>
+</html>
