@@ -20,6 +20,4 @@ from nearest_ubike_station import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^v1/ubike-station/taipei$', views.get_ubike_station),
-    url(r'^ubike/(?P<pk>[0-9]+)/$', views.get_ubike_station_by_pk),
-    url(r'^create/', views.create_station)
 ]
