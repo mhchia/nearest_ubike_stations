@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 import requests
-
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from django.views import View
 
 from nearest_ubike_station.models import Station
-from .forms import GetUbikeStationForm
+
 from .exceptions import GoogleAPIError
+from .forms import GetUbikeStationForm
+
 
 # Create your views here.
 
@@ -37,4 +38,3 @@ def get_ubike_station(request):
                 pass
             return JsonResponse({'1':s})
     return JsonResponse({})
-
