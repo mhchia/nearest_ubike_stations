@@ -7,19 +7,9 @@ from django.views import View
 
 from nearest_ubike_station.models import Station
 from .forms import GetUbikeStationForm
-
-
-class GoogleAPIError(Exception):
-
-    pass
+from .exceptions import GoogleAPIError
 
 # Create your views here.
-
-class UbikeStation(View):
-
-    def post(self, request):
-
-        return HttpResponse("HA")
 
 def is_in_taipei_city(lat, lng):
 
