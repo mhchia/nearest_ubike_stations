@@ -6,8 +6,8 @@ from django.db import models
 
 class Station(models.Model):
 
-    name = models.CharField(max_length=100)
-    num_bikes = models.IntegerField()
+    station = models.CharField(max_length=100)
+    num_ubike = models.IntegerField()
     lat = models.FloatField()
     lng = models.FloatField()
 
