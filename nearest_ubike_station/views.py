@@ -4,6 +4,7 @@ from django.db.models import F
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.views import View
+from django.views.decorators.cache import cache_page
 
 from nearest_ubike_station.models import Station
 
@@ -43,6 +44,7 @@ def is_in_taipei_city(lat, lng):
         raise GoogleAPIError("")
     return False
 
+@cache_page(60 * 1)
 def get_ubike_station(request):
 
     if request.method == 'GET':
