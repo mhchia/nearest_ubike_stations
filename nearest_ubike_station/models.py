@@ -13,4 +13,4 @@ class Station(models.Model):
 
     def __unicode__(self):
 
-        return self.name
+        return self.station
