@@ -1,5 +1,6 @@
 from django import forms
 
+
 class GetUbikeStationForm(forms.Form):
 
     lat = forms.FloatField(min_value=-90.0, max_value=90.0)

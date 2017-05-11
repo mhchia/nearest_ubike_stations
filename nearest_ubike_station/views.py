@@ -9,7 +9,7 @@ from nearest_ubike_station.models import Station
 
 from .exceptions import GoogleAPIError
 from .forms import GetUbikeStationForm
-from .utils import ErrorCode, response, is_in_taipei_city
+from .utils import ErrorCode, is_in_taipei_city, response
 
 
 # Create your views here.

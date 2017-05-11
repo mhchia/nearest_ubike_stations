@@ -1,5 +1,7 @@
-from nearest_ubike_station.models import Station
 import requests
+
+from nearest_ubike_station.models import Station
+
 
 def get_ubike_stations_data():
 

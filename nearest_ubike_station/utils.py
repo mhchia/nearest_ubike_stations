@@ -1,6 +1,8 @@
+
 import requests
 
 from .forms import GetUbikeStationForm
+
 
 class ErrorCode:
 
@@ -30,4 +32,3 @@ def is_in_taipei_city(lat, lng):
     except IndexError, e:
         raise GoogleAPIError("")
     return False
-
