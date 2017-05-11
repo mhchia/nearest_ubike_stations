@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import requests
 from django.db.models import F
 from django.http import JsonResponse
 from django.shortcuts import render
@@ -10,39 +9,10 @@ from nearest_ubike_station.models import Station
 
 from .exceptions import GoogleAPIError
 from .forms import GetUbikeStationForm
+from .utils import ErrorCode, response, is_in_taipei_city
 
 
 # Create your views here.
-
-def response(code, response=[]):
-
-    data = {
-            "code"  :   code,
-    }
-    data["result"] = [] if code != ErrorCode.OK else response
-    return data
-
-
-class ErrorCode:
-
-    ALL_STATIONS_FULL = 1
-    OK = 0
-    INVALID_LAT_OR_LNG = -1
-    LOCATION_NOT_IN_TAIPEI = -2
-    SYSTEM_ERROR = -3
-
-def is_in_taipei_city(lat, lng):
-
-    url = "https://maps.googleapis.com/maps/api/geocode/json?latlng={},{}".format(lat, lng)
-    r = requests.get(url)
-    try:
-        address_components = r.json()['results'][0]['address_components']
-        for i in address_components:
-            if "Taipei City" == i["long_name"]:
-                return True
-    except IndexError, e:
-        raise GoogleAPIError("")
-    return False
 
 @cache_page(60 * 1)
 def get_ubike_station(request):
