@@ -1,0 +1,9 @@
+{
+  "name": "ubike",
+  "description": "Get nearest ubike stations",
+  "image": "heroku/python",
+  "repository": "https://github.com/mhchia/nearest_ubike_stations",
+  "keywords": ["python", "django" ],
+  "addons": []
+}
+
