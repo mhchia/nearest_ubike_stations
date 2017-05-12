@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'nearest_ubike_station',
-    'django_crontab',
 ]
 
 MIDDLEWARE = [
@@ -131,6 +130,3 @@ STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
 )
 
-CRONJOBS = [
-    ('*/1 * * * *', 'ubike_project.cron.update_ubike_stations_data')
-]
