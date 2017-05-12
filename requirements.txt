@@ -3,3 +3,4 @@ django-crontab==0.7.1
 requests==2.13.0
 gunicorn==19.6.0
 whitenoise==3.3.0
+APScheduler==3.0.0
