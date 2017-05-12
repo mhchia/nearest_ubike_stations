@@ -13,7 +13,10 @@ def update_ubike_stations_data():
 
 @sched.scheduled_job('interval', minutes=1)
 def timed_job():
-    update_ubike_stations_data()
-    print("[UPDATED] updated ubike stations data.")
+    try:
+        update_ubike_stations_data()
+        print("[UPDATED] updated ubike stations data.")
+    except:
+        print("[FAILED UPDATE]")
 
 sched.start()
