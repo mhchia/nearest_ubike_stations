@@ -23,19 +23,17 @@ def get_ubike_station(request):
             if form.is_valid():
                 lat = form.cleaned_data['lat']
                 lng = form.cleaned_data['lng']
-                try:
-                    s = is_in_taipei_city(lat, lng)
-                    if s == False:
-                        return JsonResponse(response(ErrorCode.LOCATION_NOT_IN_TAIPEI))
-                    q = Station.objects.exclude(num_ubike=0).annotate(
-                            distance=(F('lat') - lat) * (F('lat') - lat) + (F('lng') - lng) * (F('lng') - lng)
-                        ).order_by('distance')
-                except GoogleAPIError:
-                    return JsonResponse(response(ErrorCode.SYSTEM_ERROR))
+                s = is_in_taipei_city(lat, lng)
+                if s == False:
+                    return JsonResponse(response(ErrorCode.LOCATION_NOT_IN_TAIPEI))
+                q = Station.objects.exclude(num_ubike=0).annotate(
+                        distance=(F('lat') - lat) * (F('lat') - lat) + (F('lng') - lng) * (F('lng') - lng)
+                    ).order_by('distance')
                 q = [{'station': i.station, 'num_ubike': i.num_ubike} for i in q]
                 return JsonResponse(
                     response(ErrorCode.OK, q)
                 )
             return JsonResponse(response(ErrorCode.INVALID_LAT_OR_LNG))
-        except:
+        except Exception as e:
+            print("System Error: {}".format(str(e)))
             return JsonResponse(response(ErrorCode.SYSTEM_ERROR))
