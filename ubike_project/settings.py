@@ -76,8 +76,12 @@ WSGI_APPLICATION = 'ubike_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'da3lsodobj8lac',
+        'USER': 'jhnyzlhibjishy',
+        'PASSWORD': 'cae341f6070b603ecff0de7e0074a67f89ea144ecfdc8a55daf6df32608d71e1',
+        'HOST': 'ec2-23-21-220-23.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
