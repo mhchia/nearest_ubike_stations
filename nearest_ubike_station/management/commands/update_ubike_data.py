@@ -24,20 +24,16 @@ def get_ubike_stations_data():
 def update_data(ret_value):
 
     Station.objects.all().delete()
-    print(Station.objects.all().count())
     for i in ret_value:
         s = Station(**i)
         s.save()
-    print(Station.objects.all().count())
 
 def update_ubike_stations_data():
 
     data = get_ubike_stations_data()
-#    print(data)
     update_data(data)
 
 class Command(BaseCommand):
-    #def handle_noargs(self, **options):
     def handle(self, *args, **options):
         sched = BlockingScheduler()
 
